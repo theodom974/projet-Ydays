@@ -1,30 +1,145 @@
-<!DOCTYPE html> 
-<html lang="en">
-
+<!DOCTYPE html>
+<html lang="fr">
 <head>
-
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <link rel="stylesheet" href="style.css">
-
     <title>Profil</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: url('image.png') no-repeat center center fixed;
+            background-size: cover;
+            color: #fff;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 10px 20px;
+        }
+
+        header img {
+            height: 50px;
+        }
+
+        .search-container input {
+            padding: 5px;
+            border: none;
+            border-radius: 5px;
+        }
+
+        .search-container button {
+            padding: 5px 10px;
+            border: none;
+            background: #ffcc00;
+            color: black;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 10px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 18px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        h2 {
+            border-bottom: 2px solid #ffcc00;
+            padding-bottom: 5px;
+        }
+
+        form input {
+            width: 100%;
+            padding: 8px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 5px;
+        }
+
+        form button {
+            background: #ffcc00;
+            color: black;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        ul li {
+            background: rgba(255, 255, 255, 0.3);
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 5px;
+        }
+    </style>
 </head>
 <body>
     <header>
-        <img src="image/logo.png" width="200" height="auto">
+        <img src="image/logo.png" alt="Logo">
         <div class="search-container">
             <form action="/search" method="GET">
                 <input type="text" placeholder="Rechercher..." name="query">
                 <button type="submit">Rechercher</button>
             </form>
         </div>
+    </header>
+
     <nav>
-        <a href="profil.html" class="profil"></a>
-        <a href="index.html" class="utton"><img src="image/home.png" width="40" height="auto"></a>
-        </div>
+        <a href="profil.html">Profil</a>
+        <a href="index.html"><img src="image/home.png" width="40" alt="Home"></a>
     </nav>
-</header>
+
+    <div class="container">
+        <h2>Mes Informations</h2>
+        <form>
+            <label for="username">Nom d'utilisateur</label>
+            <input type="text" id="username" value="NomUtilisateur" disabled>
+            <label for="email">Email</label>
+            <input type="email" id="email" value="utilisateur@example.com">
+            <button type="submit">Mettre à jour</button>
+        </form>
+    </div>
+
+    <div class="container">
+        <h2>Historique des commandes</h2>
+        <ul>
+            <li>Commande #12345 - 01/01/2025</li>
+            <li>Commande #12346 - 15/01/2025</li>
+        </ul>
+    </div>
+
+    <div class="container">
+        <h2>Mes produits favoris</h2>
+        <ul>
+            <li>Produit 1</li>
+            <li>Produit 2</li>
+            <li>Produit 3</li>
+        </ul>
+    </div>
 </body>
 </html>
