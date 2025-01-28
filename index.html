@@ -1,70 +1,51 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <!-- Déclaration de l'encodage des caractères utilisé par le document -->
     <meta charset="UTF-8">
-    <!-- Optimisation de l'affichage pour les appareils mobiles -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Titre de la page affiché dans l'onglet du navigateur -->
     <title>FeyZin T4</title>
-    <!-- Lien vers le fichier CSS externe pour le style -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-    <!-- En-tête de la page -->
     <header>
-        <!-- Logo de l'application ou du site -->
         <img src="image/logo.png" width="200" height="auto" class="fade-in-element">
-
-        <!-- Conteneur de recherche -->
         <div class="search-container">
-            <!-- Formulaire de recherche -->
             <form action="/search" method="GET">
                 <input type="text" placeholder="Rechercher..." name="query">
                 <button type="submit">Rechercher</button>
             </form>
-            <!-- Lien vers une page de recherche spécifique (potentiellement inutile ici car le lien est vide) -->
-            <li><a href="recherche.html" id="Recherche"></a></li>
         </div>
-
-        <!-- Onglet pour accéder au profil utilisateur -->
-        <div class="nglet">
-            <ul>
-                <li>
-                    <a href="profil.html" id="profil">
-                        <!-- Icône du profil -->
-                        <img src="image/profil.png" width="40" height="auto">
-                    </a>
-                </li>
-            </ul>
-        </div>
-
-        <!-- Onglet pour accéder au panier -->
-        <div class="onglet">
-            <a href="panier.html" id="Panier">
-                <!-- Icône du panier -->
+        <div class="onglets">
+            <a href="profil.html">
+                <img src="image/profil.png" width="40" height="auto">
+            </a>
+            <a href="panier.html">
                 <img src="image/panier.png" width="40" height="auto">
             </a>
         </div>
     </header>
-
-    <!-- Section contenant les articles à afficher -->
-    <div class="article">
-        <!-- Images des articles avec l'effet de fondu (classe fade-in-element) -->
-        <img src="image/article/doudoune.png" width="300" height="auto" class="fade-in-element">
-        <img src="image/article/polo.png" width="300" height="auto" class="fade-in-element">
-    </div> 
-
-    <!-- Deuxième section contenant d'autres articles -->
-    <div class="rticle">
-        <!-- Images des articles avec l'effet de fondu -->
-        <img src="image/article/nocta.png" width="300" height="auto" class="fade-in-element">
-        <img src="image/article/maillot.png" width="300" height="auto" class="fade-in-element">
-    </div>
-
-    <!-- Inclusion du fichier JavaScript externe -->
+    <section class="products">
+        <div class="product fade-in-element">
+            <img src="image/article/sweat.png" width="300" height="auto">
+            <h3>Sweat Adidas</h3>
+            <p class="price">60€</p>
+        </div>
+        <div class="product fade-in-element">
+            <img src="image/article/jogging.png" width="300" height="auto">
+            <h3>Jogging Nike</h3>
+            <p class="price">60€</p>
+        </div>
+        <div class="product fade-in-element">
+            <img src="image/article/crampon.png"300" height="auto">
+            <h3>Crampon Nike</h3>
+            <p class="price">120€</p>
+        </div>
+        <div class="product fade-in-element">
+            <img src="image/article/psg.png" width="300" height="auto">
+            <h3>Maillot PSG</h3>
+            <p class="price">100€</p>
+        </div>
+    </section>
     <script src="script.js"></script>
-
 </body>
 </html>
