@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FeyZin T4</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link rel="icon" type="image/x-icon" href="image/icon.png">
+</head>
+<body>
+    <header>
+        <img src="image/logo.png" width="200" class="fade-in-element">
+        <div class="search-container">
+            <form action="/search" method="GET">
+                <input type="text" placeholder="Rechercher..." name="query">
+                <button type="submit">Rechercher</button>
+            </form>
+        </div>
+        <div class="onglets">
+            <a href="profil.html"><img src="image/profil.png" width="40"></a>
+            <a href="panier.html"><img src="image/panier.png" width="40"></a>
+        </div>
+    </header>
+
+    <main>
+        <h2>Nos Produits</h2>
+        <section class="products" id="products"></section>
+    </main>
+
+    <script src="/static/js/script.js"></script>
+</body>
+</html>

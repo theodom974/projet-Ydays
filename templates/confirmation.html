@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Confirmation de commande</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link rel="icon" type="image/x-icon" href="image/icon.png">
+</head>
+<body>
+
+<header>
+    <img src="image/logo.png" width="200">
+    <nav>
+        <a href="/"><img src="image/home.png" width="40"></a>
+        <a href="panier.html"><img src="image/panier.png" width="40"></a>
+    </nav>
+</header>
+
+<main class="confirmation-page">
+    <h1>Confirmation de commande</h1>
+
+    <section id="recapitulatif" class="recap-section"></section>
+
+    <form id="formulaire-commande" class="form-commande">
+        <h2>Vos informations</h2>
+
+        <input type="text" placeholder="Nom complet" required>
+        <input type="text" placeholder="Adresse de livraison" required>
+
+        <h3>Moyen de paiement</h3>
+        <label><input type="radio" name="paiement" value="Carte" checked> Carte bancaire</label>
+        <label><input type="radio" name="paiement" value="PayPal"> PayPal</label>
+
+        <button type="submit">Valider la commande</button>
+    </form>
+
+    <div id="message-final" class="message-final" style="display: none;">
+        <h2>Merci pour votre commande ! 🛍️</h2>
+        <p>Vous recevrez un email de confirmation dans quelques instants.</p>
+    </div>
+</main>
+
+<script src="/static/js/produit.js"></script>
+</body>
+</html>

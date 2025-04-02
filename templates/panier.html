@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon Panier</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link rel="icon" type="image/x-icon" href="image/icon.png">
+</head>
+<body>
+
+<header>
+    <img src="image/logo.png" width="200">
+    <div class="search-container">
+        <form action="/search" method="GET">
+            <input type="text" placeholder="Rechercher..." name="query">
+            <button type="submit">Rechercher</button>
+        </form>
+    </div>
+    <nav>
+        <a href="/"><img src="image/home.png" width="40"></a>
+        <a href="profil.html"><img src="image/profil.png" width="40"></a>
+    </nav>
+</header>
+
+<main>
+    <h1>Mon Panier</h1>
+    <section id="panier-contenu" class="panier-section"></section>
+    <div class="total-panier">
+        Total : <span id="total">0 €</span>
+    </div>
+    <div style="text-align:center; margin-top: 20px;">
+        <a href="confirmation.html">
+            <button class="ajouter-panier">Procéder au paiement</button>
+        </a>
+    </div>
+    
+</main>
+
+<script src="/static/js/panier.js"></script>
+</body>
+</html>

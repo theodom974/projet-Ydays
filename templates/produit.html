@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Fiche Produit</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link rel="icon" type="image/x-icon" href="image/icon.png">
+</head>
+<body>
+
+<header>
+    <img src="image/logo.png" width="200">
+    <div class="search-container">
+        <form action="/search" method="GET">
+            <input type="text" placeholder="Rechercher..." name="query">
+            <button type="submit">Rechercher</button>
+        </form>
+    </div>
+    <nav>
+        <a href="/"><img src="image/home.png" width="40"></a>
+        <a href="profil.html"><img src="image/profil.png" width="40"></a>
+    </nav>
+</header>
+
+<main class="panier-page">
+    <div class="product-detail" id="fiche-produit">
+        <!-- contenu injecté dynamiquement -->
+    </div>
+</main>
+
+<script src="/static/js/produit.js"></script>
+</body>
+</html>

@@ -1,0 +1,317 @@
+/* Effet de fondu */
+.fade-in-element {
+   opacity: 0;
+   transition: opacity 5s ease-in-out;
+}
+
+.fade-in-element.visible {
+   opacity: 1;
+}
+
+/* Style général */
+body {
+   font-family: Arial, sans-serif;
+   background-image: url(/image/fond.png);
+   background-repeat: no-repeat;
+   background-size: cover;
+   text-align: center;
+   margin: 0;
+   padding: 0;
+}
+
+/* En-tête */
+header {
+   background: #e6e6e6;
+   padding: 10px 0;
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+}
+
+/* Recherche */
+.search-container {
+   display: flex;
+   align-items: center;
+   margin-left: 10px;
+}
+
+input[type="text"] {
+   width: 200px;
+   padding: 10px;
+   font-size: 16px;
+   border: 1px solid #ccc;
+   border-radius: 5px;
+}
+
+button {
+   padding: 10px 20px;
+   font-size: 16px;
+   background-color: black;
+   color: white;
+   border: none;
+   border-radius: 5px;
+   cursor: pointer;
+}
+
+button:hover {
+   background-color: grey;
+}
+
+/* Icônes du profil et panier */
+.onglets {
+   display: flex;
+   gap: 15px;
+   margin-right: 20px;
+}
+
+.onglets img {
+   width: 40px;
+   height: auto;
+}
+
+/* Section des produits */
+.products {
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: center;
+   gap: 20px;
+   padding: 20px;
+}
+
+/* Produit individuel */
+.product {
+   background: #e6e6e6;
+   padding: 10px;
+   border-radius: 10px;
+   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+   width: 300px;
+}
+
+.product img {
+   width: 100%;
+   border-radius: 10px;
+}
+
+.price {
+   font-weight: bold;
+   font-size: 18px;
+   color: rgb(0, 0, 0);
+}
+.fiche-container {
+   display: flex;
+   flex-wrap: wrap;
+   max-width: 1100px;
+   margin: 50px auto;
+   background: rgba(255, 255, 255, 0.95);
+   border-radius: 20px;
+   box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+   overflow: hidden;
+}
+
+.fiche-image {
+   flex: 1 1 50%;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   padding: 20px;
+}
+
+.fiche-image img.main-img {
+   max-width: 100%;
+   border-radius: 12px;
+   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.fiche-info {
+   flex: 1 1 50%;
+   padding: 30px;
+   text-align: left;
+}
+
+.fiche-title {
+   font-size: 28px;
+   margin-bottom: 10px;
+}
+
+.fiche-price {
+   font-size: 24px;
+   font-weight: bold;
+   color: #000;
+}
+
+.fiche-promo {
+   font-size: 16px;
+   color: #444;
+   margin-bottom: 20px;
+}
+
+.fiche-details {
+   list-style: none;
+   padding: 0;
+   margin-bottom: 20px;
+}
+
+.fiche-details li {
+   margin: 8px 0;
+   font-size: 15px;
+}
+
+.fiche-tailles .label,
+.fiche-quantite .label {
+   font-weight: bold;
+   margin-bottom: 8px;
+}
+
+.taille-buttons {
+   display: flex;
+   gap: 10px;
+   flex-wrap: wrap;
+   margin-bottom: 20px;
+}
+
+.taille-buttons button {
+   padding: 10px 15px;
+   border: 1px solid #000;
+   border-radius: 8px;
+   background: #000000;
+   cursor: pointer;
+   font-weight: bold;
+   transition: 0.2s ease;
+}
+
+.taille-buttons button:hover {
+   background: black;
+   color: rgb(255, 255, 255);
+}
+
+.fiche-quantite {
+   margin-bottom: 20px;
+}
+
+.qty-control {
+   display: flex;
+   align-items: center;
+   gap: 10px;
+}
+
+.qty-control input {
+   width: 60px;
+   text-align: center;
+   font-size: 16px;
+   padding: 5px;
+   border: 1px solid #ccc;
+   border-radius: 5px;
+}
+
+.ajouter-panier {
+   width: 100%;
+   padding: 15px;
+   font-size: 18px;
+   background-color: black;
+   color: white;
+   border-radius: 10px;
+   border: none;
+   cursor: pointer;
+   transition: background-color 0.3s ease;
+}
+
+.ajouter-panier:hover {
+   background-color: grey;
+}
+.taille-buttons button.selected {
+   background-color: black;
+   color: white;
+}
+.panier-section {
+   display: flex;
+   flex-direction: column;
+   gap: 20px;
+   max-width: 900px;
+   margin: 40px auto;
+   padding: 20px;
+   background: rgba(255,255,255,0.9);
+   border-radius: 15px;
+}
+
+.article-panier {
+   display: flex;
+   gap: 20px;
+   padding: 20px;
+   background: #f3f3f3;
+   border-radius: 10px;
+   align-items: center;
+   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.img-panier {
+   width: 120px;
+   border-radius: 10px;
+}
+
+.info-panier h3 {
+   margin: 0;
+   font-size: 20px;
+}
+
+.info-panier p {
+   margin: 4px 0;
+}
+
+.total-panier {
+   text-align: center;
+   font-size: 24px;
+   font-weight: bold;
+   margin-top: 30px;
+}
+h1{
+   color: white
+}
+h2{
+   color: white
+}
+.confirmation-page {
+   max-width: 900px;
+   margin: 40px auto;
+   padding: 20px;
+   background: rgba(255,255,255,0.95);
+   border-radius: 15px;
+   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.form-commande {
+   display: flex;
+   flex-direction: column;
+   gap: 15px;
+   margin-top: 30px;
+}
+
+.form-commande input[type="text"] {
+   padding: 12px;
+   font-size: 16px;
+   border-radius: 8px;
+   border: 1px solid #ccc;
+}
+
+.form-commande label {
+   font-size: 16px;
+}
+
+.form-commande button {
+   margin-top: 20px;
+   padding: 14px;
+   font-size: 18px;
+   background: black;
+   color: white;
+   border: none;
+   border-radius: 10px;
+   cursor: pointer;
+}
+
+.form-commande button:hover {
+   background: grey;
+}
+
+.message-final {
+   text-align: center;
+   margin-top: 50px;
+}
