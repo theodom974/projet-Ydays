@@ -1,0 +1,111 @@
+body {
+    font-family: Arial, sans-serif;
+    background-image: url(/image/fond.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+ }
+ header {
+   background: #e6e6e6;
+   padding: 10px 0;
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+}
+
+/* Recherche */
+.search-container {
+   display: flex;
+   align-items: center;
+   margin-left: 10px;
+}
+
+input[type="text"] {
+   width: 200px;
+   padding: 10px;
+   font-size: 16px;
+   border: 1px solid #ccc;
+   border-radius: 5px;
+}
+
+button {
+   padding: 10px 20px;
+   font-size: 16px;
+   background-color: black;
+   color: white;
+   border: none;
+   border-radius: 5px;
+   cursor: pointer;
+}
+
+button:hover {
+   background-color: grey;
+}
+
+/* Icônes du profil et panier */
+.onglets {
+   display: flex;
+   gap: 15px;
+   margin-right: 20px;
+}
+
+.onglets img {
+   width: 40px;
+   height: auto;
+}
+ .profil-page {
+    display: flex;
+    max-width: 1100px;
+    margin: 40px auto;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+ }
+ 
+ .profil-menu {
+    width: 250px;
+    background: #f3f3f3;
+    padding: 20px;
+    border-right: 1px solid #ddd;
+    text-align: left;
+ }
+ 
+ .profil-menu h2 {
+    font-size: 20px;
+    margin-bottom: 15px;
+ }
+ 
+ .profil-menu ul {
+    list-style: none;
+    padding: 0;
+ }
+ 
+ .profil-menu li {
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+ }
+ 
+ .profil-menu li:hover {
+    background-color: #e0e0e0;
+ }
+ 
+ .profil-content {
+    flex: 1;
+    padding: 30px;
+    text-align: left;
+ }
+ 
+ .profil-content h1 {
+    font-size: 26px;
+    margin-bottom: 10px;
+ }
+ 
+ .profil-content p {
+    font-size: 16px;
+    line-height: 1.6;
+ }

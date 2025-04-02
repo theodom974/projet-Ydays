@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Connexion ou Inscription</title>
+  <link rel="stylesheet" href="/static/auth.css">
+  <link rel="icon" type="image/x-icon" href="image/icon.png">
+</head>
+<body>
+
+<main class="auth-container">
+  <div class="auth-box">
+
+    <div class="auth-form login-form">
+      <h2>Se connecter</h2>
+      <form id="login-form">
+        <input type="email" name="email" placeholder="Email" required>
+        <input type="password" name="password" placeholder="Mot de passe" required>
+        <button type="submit">Connexion</button>
+        <p id="erreur-login" class="erreur-msg"></p>
+      </form>
+    </div>
+
+    <div class="auth-form register-form">
+      <h2>Créer un compte</h2>
+      <form id="register-form">
+        <input type="text" name="prenom" placeholder="Prénom" required>
+        <input type="email" name="email" placeholder="Email" required>
+        <input type="password" name="password" placeholder="Mot de passe" required>
+        <button type="submit">Inscription</button>
+        <p id="erreur-register" class="erreur-msg"></p>
+      </form>
+    </div>
+
+  </div>
+</main>
+
+<script src="/static/js/auth.js"></script>
+</body>
+</html>
