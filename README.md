@@ -64,12 +64,12 @@ projet-Ydays/
 └── README.md
 
 👥 Auteurs
-
-    Gamarra Damien
-
     Domballe Théo
-
     Lemoing Noah
+    Delattre Ugo
+    Chakir Anas
+    BENDJELLOUL Kenzi
+    
 
 ☁️ Déployé sur Render
 
