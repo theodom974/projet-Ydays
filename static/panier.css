@@ -1,0 +1,159 @@
+/* --- Fiche produit style Adidas --- */
+/* Effet de fondu */
+.fade-in-element {
+   opacity: 0;
+   transition: opacity 5s ease-in-out;
+}
+
+.fade-in-element.visible {
+   opacity: 1;
+}
+
+/* Style général */
+body {
+   font-family: Arial, sans-serif;
+   background-image: url(/image/fond.png);
+   background-repeat: no-repeat;
+   background-size: cover;
+   text-align: center;
+   margin: 0;
+   padding: 0;
+}
+
+/* En-tête */
+header {
+   background: #e6e6e6;
+   padding: 10px 0;
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+}
+
+/* Recherche */
+.search-container {
+   display: flex;
+   align-items: center;
+   margin-left: 10px;
+}/* Style général du panier */
+.panier-section {
+   display: flex;
+   flex-direction: column;
+   gap: 30px;
+   max-width: 1200px;
+   margin: 50px auto;
+   padding: 30px;
+   background: rgba(255, 255, 255, 0.9);
+   border-radius: 15px;
+   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Titre du panier */
+.panier-section h1 {
+   font-size: 36px;
+   font-weight: bold;
+   color: #333;
+   text-align: center;
+   margin-bottom: 20px;
+}
+
+/* Contenu du panier (produits) */
+.article-panier {
+   display: flex;
+   gap: 20px;
+   padding: 20px;
+   background: #f8f8f8;
+   border-radius: 12px;
+   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+   align-items: center;
+   transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.article-panier:hover {
+   transform: scale(1.03);
+   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Image produit dans le panier */
+.article-panier .img-panier {
+   width: 150px;
+   height: 150px;
+   border-radius: 10px;
+   object-fit: cover;
+}
+
+/* Informations sur le produit */
+.info-panier {
+   flex-grow: 1;
+   display: flex;
+   flex-direction: column;
+   gap: 8px;
+}
+
+.info-panier h3 {
+   font-size: 24px;
+   color: #444;
+   margin: 0;
+}
+
+.info-panier p {
+   font-size: 16px;
+   color: #777;
+   margin: 0;
+}
+
+/* Bouton supprimer */
+.info-panier .btn-supprimer {
+   align-self: flex-start;
+   background-color: #e60000;
+   color: white;
+   padding: 10px 20px;
+   font-size: 14px;
+   border: none;
+   border-radius: 5px;
+   cursor: pointer;
+   transition: background-color 0.3s ease;
+}
+
+.info-panier .btn-supprimer:hover {
+   background-color: #cc0000;
+}
+
+/* Total du panier */
+.total-panier {
+   display: flex;
+   justify-content: space-between;
+   font-size: 24px;
+   font-weight: bold;
+   color: #333;
+   padding: 20px 0;
+   border-top: 2px solid #ccc;
+   margin-top: 20px;
+}
+
+/* Bouton de paiement */
+.proceder-panier {
+   width: 100%;
+   padding: 15px;
+   font-size: 18px;
+   background-color: black;
+   color: white;
+   border-radius: 10px;
+   border: none;
+   cursor: pointer;
+   transition: background-color 0.3s ease;
+   margin-top: 30px;
+}
+
+.proceder-panier:hover {
+   background-color: grey;
+}
+
+/* Style de l'image en fond */
+body {
+   background-image: url(/image/fond.png);
+   background-size: cover;
+   background-position: center;
+   font-family: Arial, sans-serif;
+   margin: 0;
+   padding: 0;
+}

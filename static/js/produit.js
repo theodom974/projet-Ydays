@@ -132,3 +132,40 @@ window.addEventListener('DOMContentLoaded', () => {
     const id = getIdFromURL();
     if (id) chargerProduit(id);
 });
+// Injecte dynamiquement les produits dans la page
+function afficherProduits(produits) {
+    const section = document.getElementById('products');
+    section.innerHTML = '';
+
+    produits.forEach(produit => {
+        const div = document.createElement('div');
+        div.className = 'product fade-in-element';
+
+        div.innerHTML = `
+            <a href="produit.html?id=${produit.id}" style="text-decoration: none; color: inherit;">
+                <img src="${produit.image || 'image/article/default.png'}" class="product-img">
+                <h3>${produit.nom}</h3>
+                <p class="price">${produit.prix}€</p>
+            </a>
+            <button class="add-to-cart" onclick="ajouterAuPanier(${produit.id})">Ajouter au panier</button>
+        `;
+
+        section.appendChild(div);
+    });
+
+    checkVisibility();
+}
+
+// Fonction pour ajouter au panier
+function ajouterAuPanier(idProduit) {
+    // Récupérer les produits dans le panier ou initialiser le tableau
+    let panier = JSON.parse(localStorage.getItem('panier')) || [];
+
+    // Ajouter l'ID du produit dans le panier (tu peux également ajouter d'autres informations ici)
+    panier.push(idProduit);
+
+    // Sauvegarder dans le localStorage
+    localStorage.setItem('panier', JSON.stringify(panier));
+
+    alert('Produit ajouté au panier !');
+}

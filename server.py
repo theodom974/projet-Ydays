@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request, jsonify, send_from_directory, session, redirect
+from werkzeug.security import generate_password_hash, check_password_hash
 import sqlite3
 import os
 
@@ -41,6 +42,9 @@ def login():
     email = data.get("email")
     password = data.get("password")
 
+    if not email or not password:
+        return jsonify({"success": False, "message": "Champs manquants"})
+
     conn = sqlite3.connect("users.db")
     cursor = conn.cursor()
     cursor.execute("SELECT id, prenom, password FROM users WHERE email = ?", (email,))
@@ -51,7 +55,7 @@ def login():
         return jsonify({"success": False, "message": "Email inconnu"})
 
     user_id, prenom, db_password = user
-    if password != db_password:
+    if not check_password_hash(db_password, password):
         return jsonify({"success": False, "message": "Mot de passe incorrect"})
 
     session["user_id"] = user_id
@@ -65,6 +69,9 @@ def register():
     email = data.get("email")
     password = data.get("password")
 
+    if not email or not password or not prenom:
+        return jsonify({"success": False, "message": "Champs manquants"})
+
     conn = sqlite3.connect("users.db")
     cursor = conn.cursor()
     cursor.execute("SELECT id FROM users WHERE email = ?", (email,))
@@ -74,7 +81,9 @@ def register():
         conn.close()
         return jsonify({"success": False, "message": "Cet email est déjà utilisé."})
 
-    cursor.execute("INSERT INTO users (prenom, email, password) VALUES (?, ?, ?)", (prenom, email, password))
+    hashed_password = generate_password_hash(password)
+    cursor.execute("INSERT INTO users (prenom, email, password) VALUES (?, ?, ?)",
+                   (prenom, email, hashed_password))
     conn.commit()
     conn.close()
 
