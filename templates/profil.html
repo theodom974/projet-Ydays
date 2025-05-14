@@ -1,56 +1,134 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <title>Mon Profil</title>
-    <link rel="stylesheet" href="/static/profil.css">
-    <link rel="icon" type="image/x-icon" href="image/icon.png">
+  <meta charset="UTF-8" />
+  <title>Mon Profil</title>
+  <link rel="stylesheet" href="/static/profil.css" />
+  <link rel="icon" type="image/x-icon" href="/image/icon.png" />
 </head>
 <body>
-    
+
 <header>
-    
-    <img src="/image/logo.png" width="200">
-    <form action="/search" method="GET">
-        <input type="text" placeholder="Rechercher..." name="query">
-        <button type="submit">Rechercher</button>
-    </form>
-    <nav>
-        <a href="/"><img src="/image/home.png" width="40" title="Menu"></a>
-        <a href="/logout"><img src="/image/loung.png" width="40" title="Se déconnecter"></a>
-    </nav>
+  <img src="/image/logo.png" width="200" />
+  <form action="/search" method="GET">
+    <input type="text" placeholder="Rechercher..." name="query" />
+    <button type="submit">Rechercher</button>
+  </form>
+  <nav>
+    <a href="/"><img src="/image/home.png" width="40" title="Accueil" /></a>
+    <a href="/logout"><img src="/image/loung.png" width="40" title="Déconnexion" /></a>
+  </nav>
 </header>
 
 <main class="profil-page">
-    <aside class="profil-menu">
-        <h2>Mon Compte</h2>
-        <ul>
-            <li>Informations</li>
-            <li>Paiement</li>
-            <li>Livraison</li>
-            <li>Préférences</li>
-            <li>Visibilité</li>
-        </ul>
-    </aside>
+  <aside class="profil-menu">
+    <h2>Mon Compte</h2>
+    <ul>
+      <li data-tab="informations" class="active">Informations</li>
+      <li data-tab="paiement">Paiement</li>
+      <li data-tab="livraison">Livraison</li>
+      <li data-tab="preferences">Préférences</li>
+      <li data-tab="visibilite">Visibilité</li>
+    </ul>
+  </aside>
 
-    <section class="profil-content">
-        <h1 id="bonjour">Bonjour !</h1>
-        <p>Bienvenue dans votre espace personnel.</p>
-        <p>Vous pouvez ici consulter et modifier vos informations personnelles, préférences de livraison, moyens de paiement et paramètres de visibilité.</p>
-    </section>
+  <section class="profil-content">
+    <!-- Informations -->
+    <div class="tab active" id="informations">
+      <h1 id="bonjour">Bonjour !</h1>
+      <form>
+        <label>Prénom :</label>
+        <input type="text" name="prenom" placeholder="Theo" />
+
+        <label>Nom :</label>
+        <input type="text" name="nom" placeholder="Domballe" />
+
+        <label>Email :</label>
+        <input type="email" name="email" placeholder="exemple@mail.com" />
+
+        <button type="submit">Enregistrer</button>
+      </form>
+    </div>
+
+    <!-- Paiement -->
+    <div class="tab" id="paiement">
+      <h1>Moyens de Paiement</h1>
+      <form>
+        <label>Numéro de carte :</label>
+        <input type="text" name="carte" />
+
+        <label>Date d’expiration :</label>
+        <input type="month" name="expiration" />
+
+        <label>CVV :</label>
+        <input type="month" name="CVV" />
+
+        <label>Nom sur la carte :</label>
+        <input type="text" name="nomcarte"  />
+
+        <button type="submit">Ajouter le moyen de paiement</button>
+      </form>
+    </div>
+
+    <!-- Livraison -->
+    <div class="tab" id="livraison">
+      <h1>Adresse de Livraison</h1>
+      <form>
+        <label>Adresse :</label>
+        <input type="text" name="adresse" placeholder="15 rue de Paris" />
+
+        <label>Ville :</label>
+        <input type="text" name="ville" placeholder="Montpellier" />
+
+        <label>Code postal :</label>
+        <input type="text" name="code" placeholder="34000" />
+
+        <button type="submit">Enregistrer l’adresse</button>
+      </form>
+    </div>
+
+    <!-- Préférences -->
+    <div class="tab" id="preferences">
+      <h1>Préférences</h1>
+      <form>
+        <label>Langue :</label>
+        <select name="langue">
+          <option>Français</option>
+          <option>Anglais</option>
+        </select>
+
+        <label>Mode sombre :</label>
+        <select name="mode">
+          <option>Activé</option>
+          <option>Désactivé</option>
+        </select>
+
+        <button type="submit">Appliquer</button>
+      </form>
+    </div>
+
+    <!-- Visibilité -->
+    <div class="tab" id="visibilite">
+      <h1>Paramètres de Visibilité</h1>
+      <form>
+        <label>Profil public :</label>
+        <select name="profilPublic">
+          <option value="oui">Oui</option>
+          <option value="non">Non</option>
+        </select>
+
+        <label>Afficher email :</label>
+        <select name="emailVisible">
+          <option value="oui">Oui</option>
+          <option value="non">Non</option>
+        </select>
+
+        <button type="submit">Mettre à jour</button>
+      </form>
+    </div>
+  </section>
 </main>
 
-<script>
-    fetch('/api/user')
-        .then(res => res.json())
-        .then(data => {
-            if (data.success) {
-                document.getElementById("bonjour").textContent = "Bonjour " + data.prenom + " 👋";
-            } else {
-                document.getElementById("bonjour").textContent = "Bonjour invité";
-            }
-        });
-</script>
-
+<script src="/static/js/profil.js"></script>
 </body>
 </html>

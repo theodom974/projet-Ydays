@@ -1,111 +1,200 @@
+/* --------- BASE --------- */
 body {
-    font-family: Arial, sans-serif;
-    background-image: url(/image/fond.png);
-    background-repeat: no-repeat;
-    background-size: cover;
-    text-align: center;
-    margin: 0;
-    padding: 0;
+   font-family: Arial, sans-serif;
+   background-image: url(/image/fond.png);
+   background-repeat: no-repeat;
+   background-size: cover;
+   margin: 0;
+   padding: 0;
+   color: #333;
  }
+ 
+ /* --------- HEADER --------- */
  header {
    background: #e6e6e6;
-   padding: 10px 0;
+   padding: 10px 20px;
    display: flex;
    align-items: center;
    justify-content: space-between;
-}
-
-/* Recherche */
-.search-container {
+   flex-wrap: wrap;
+ }
+ 
+ header img {
+   height: auto;
+ }
+ 
+ form {
    display: flex;
    align-items: center;
-   margin-left: 10px;
-}
-
-input[type="text"] {
+   gap: 10px;
+ }
+ 
+ input[type="text"] {
    width: 200px;
-   padding: 10px;
-   font-size: 16px;
+   padding: 8px 12px;
+   font-size: 14px;
    border: 1px solid #ccc;
    border-radius: 5px;
-}
-
-button {
-   padding: 10px 20px;
-   font-size: 16px;
+ }
+ 
+ button {
+   padding: 8px 16px;
+   font-size: 14px;
    background-color: black;
    color: white;
    border: none;
    border-radius: 5px;
    cursor: pointer;
-}
-
-button:hover {
-   background-color: grey;
-}
-
-/* Icônes du profil et panier */
-.onglets {
-   display: flex;
-   gap: 15px;
-   margin-right: 20px;
-}
-
-.onglets img {
-   width: 40px;
-   height: auto;
-}
- .profil-page {
-    display: flex;
-    max-width: 1100px;
-    margin: 40px auto;
-    background: rgba(255, 255, 255, 0.95);
-    border-radius: 15px;
-    overflow: hidden;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+   transition: background 0.3s ease;
  }
  
+ button:hover {
+   background-color: grey;
+ }
+ 
+ nav a {
+   margin-left: 10px;
+ }
+ 
+ /* --------- STRUCTURE PRINCIPALE --------- */
+ .profil-page {
+   display: flex;
+   max-width: 1100px;
+   margin: 50px auto;
+   background: rgba(255, 255, 255, 0.95);
+   border-radius: 15px;
+   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+   overflow: hidden;
+ }
+ 
+ /* --------- MENU DE GAUCHE --------- */
  .profil-menu {
-    width: 250px;
-    background: #f3f3f3;
-    padding: 20px;
-    border-right: 1px solid #ddd;
-    text-align: left;
+   width: 250px;
+   background: #f3f3f3;
+   padding: 20px;
+   border-right: 1px solid #ddd;
+   text-align: left;
  }
  
  .profil-menu h2 {
-    font-size: 20px;
-    margin-bottom: 15px;
+   font-size: 20px;
+   margin-bottom: 15px;
  }
  
  .profil-menu ul {
-    list-style: none;
-    padding: 0;
+   list-style: none;
+   padding: 0;
+   margin: 0;
  }
  
  .profil-menu li {
-    padding: 10px 0;
-    border-bottom: 1px solid #ddd;
-    cursor: pointer;
-    transition: background-color 0.2s ease;
+   padding: 12px 10px;
+   border-bottom: 1px solid #ddd;
+   cursor: pointer;
+   transition: background-color 0.2s ease;
  }
  
  .profil-menu li:hover {
-    background-color: #e0e0e0;
+   background-color: #e0e0e0;
  }
  
+ .profil-menu li.active {
+   background-color: #ddd;
+   font-weight: bold;
+   border-left: 4px solid black;
+ }
+ 
+ /* --------- CONTENU DE DROITE --------- */
  .profil-content {
-    flex: 1;
-    padding: 30px;
-    text-align: left;
+   flex: 1;
+   padding: 30px;
+   text-align: left;
  }
  
  .profil-content h1 {
-    font-size: 26px;
-    margin-bottom: 10px;
+   font-size: 24px;
+   margin-bottom: 15px;
  }
  
  .profil-content p {
-    font-size: 16px;
-    line-height: 1.6;
+   font-size: 16px;
+   line-height: 1.6;
  }
+ 
+ .tab {
+   display: none;
+ }
+ 
+ .tab.active {
+   display: block;
+ }
+ 
+ /* --------- RESPONSIVE --------- */
+ @media screen and (max-width: 768px) {
+   .profil-page {
+     flex-direction: column;
+     margin: 20px;
+   }
+ 
+   .profil-menu {
+     width: 100%;
+     border-right: none;
+     border-bottom: 1px solid #ddd;
+   }
+ 
+   .profil-menu ul {
+     display: flex;
+     flex-wrap: wrap;
+     gap: 10px;
+   }
+ 
+   .profil-menu li {
+     flex: 1;
+     text-align: center;
+     border-bottom: none;
+     border-right: 1px solid #ddd;
+     padding: 10px 5px;
+   }
+ 
+   .profil-menu li:last-child {
+     border-right: none;
+   }
+ 
+   .profil-content {
+     padding: 20px;
+   }
+ }
+ .tab {
+   display: none;
+ }
+ 
+ .tab.active {
+   display: block;
+ }
+ form {
+   display: flex;
+   flex-direction: column;
+   gap: 15px;
+   margin-top: 20px;
+   max-width: 400px;
+ }
+ 
+ form input, form select {
+   padding: 10px;
+   border-radius: 6px;
+   border: 1px solid #ccc;
+ }
+ 
+ form button {
+   background-color: black;
+   color: white;
+   padding: 12px;
+   border-radius: 6px;
+   cursor: pointer;
+   border: none;
+ }
+ 
+ form button:hover {
+   background-color: grey;
+ }
+  

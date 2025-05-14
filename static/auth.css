@@ -1,74 +1,97 @@
+/* ---------- BASE ---------- */
 body {
-    font-family: Arial, sans-serif;
-    background-image: url(/image/fond.png);
-    background-repeat: no-repeat;
-    background-size: cover;
-    text-align: center;
-    margin: 0;
-    padding: 0;
- }
- /* En-tête */
-header {
-  background: #e6e6e6;
-  padding: 10px 0;
-  display: flex;
-  align-items: center;
-  justify-content: center; /* centrer horizontalement */
+  font-family: Arial, sans-serif;
+  background-image: url(/image/fond.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  text-align: center;
+  margin: 0;
+  padding: 0;
 }
 
+/* ---------- CONTAINER ---------- */
 .auth-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 90vh;
-  
-  }
-  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90vh;
+}
+
+.auth-box {
+  display: flex;
+  gap: 50px;
+  padding: 40px;
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* ---------- FORMULAIRE ---------- */
+.auth-form {
+  width: 300px;
+  text-align: left;
+}
+
+.auth-form h2 {
+  margin-bottom: 20px;
+  font-size: 24px;
+  text-transform: uppercase;
+  color: #333;
+  border-bottom: 2px solid #eee;
+  padding-bottom: 10px;
+}
+
+.auth-form input {
+  display: block;
+  width: 100%;
+  margin-bottom: 15px;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  transition: 0.3s;
+}
+
+.auth-form input:focus {
+  border-color: #000;
+  outline: none;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.auth-form button {
+  width: 100%;
+  padding: 12px;
+  background: black;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  border: none;
+  transition: 0.3s;
+}
+
+.auth-form button:hover {
+  background: #ffd700;
+  color: #000;
+}
+
+/* ---------- MESSAGE D'ERREUR ---------- */
+.erreur-msg {
+  color: red;
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 600px) {
   .auth-box {
-    display: flex;
-    gap: 50px;
-    padding: 40px;
-    background: white;
-    border-radius: 20px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    flex-direction: column;
+    padding: 20px;
+    gap: 20px;
   }
-  
+
   .auth-form {
-    width: 300px;
-    text-align: left;
-  }
-  
-  .auth-form h2 {
-    margin-bottom: 20px;
-  }
-  
-  .auth-form input {
-    display: block;
     width: 100%;
-    margin-bottom: 15px;
-    padding: 10px;
-    font-size: 16px;
-    border-radius: 8px;
-    border: 1px solid #ccc;
   }
-  
-  .auth-form button {
-    width: 100%;
-    padding: 12px;
-    background: black;
-    color: white;
-    font-size: 16px;
-    border-radius: 8px;
-    cursor: pointer;
-    border: none;
-  }
-  
-  .auth-form button:hover {
-    background: grey;
-  }
-  
-  .erreur-msg {
-    color: red;
-    font-size: 14px;
-    margin-top: 5px;
-  }
+}
