@@ -1,3 +1,4 @@
+
 DROP TABLE IF EXISTS users;
 DROP TABLE IF EXISTS preferences;
 DROP TABLE IF EXISTS paiement;
@@ -21,6 +22,8 @@ CREATE TABLE preferences (
 CREATE TABLE paiement (
     user_id INTEGER PRIMARY KEY,
     carte TEXT,
+    exp TEXT,       -- Nouveau : date d’expiration MM/AA
+    cvv TEXT,       -- Nouveau : code de sécurité CVV
     FOREIGN KEY(user_id) REFERENCES users(id)
 );
 

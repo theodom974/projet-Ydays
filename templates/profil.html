@@ -30,13 +30,7 @@
       <li data-tab="preferences">Préférences</li>
       <li data-tab="visibilite">Visibilité</li>
     </ul>
-  </aside>tab {
-    display: none;
-  }
- 
-  .tab.active {
-    display: block;
-  }
+  </aside>
 
   <section class="profil-content">
     <!-- Informations -->
@@ -44,13 +38,13 @@
       <h1 id="bonjour">Bonjour !</h1>
       <form>
         <label>Prénom :</label>
-        <input type="text" name="prenom" placeholder="Theo" />
+        <input type="text" name="prenom" placeholder="Prénom" />
 
         <label>Nom :</label>
-        <input type="text" name="nom" placeholder="Domballe" />
+        <input type="text" name="nom" placeholder="Nom" />
 
         <label>Email :</label>
-        <input type="email" name="email" placeholder="exemple@mail.com" />
+        <input type="email" name="email" placeholder="Email" />
 
         <button type="submit">Enregistrer</button>
       </form>
@@ -58,24 +52,39 @@
 
     <!-- Paiement -->
     <div class="tab" id="paiement" style="display: none;">
-        <h1>Moyens de Paiement</h1>
-        <input type="text" id="carte" placeholder="**** **** **** 1234" />
-        <button onclick="savePaiement()">Enregistrer</button>
-      </div>
-      
+      <h1>Ajouter une carte</h1>
+    
+      <form id="form-paiement">
+        <div class="paiement-ligne">
+          <input type="text" id="numCarte" placeholder="Numéro de carte" required>
+          <input type="text" id="dateCarte" placeholder="MM/AA" required>
+          <input type="text" id="cvvCarte" placeholder="CVV" required>
+        </div>
+    
+        <div class="paiement-options">
+          <label>
+            <input type="checkbox" id="saveCarte">
+            Enregistrer la carte de crédit pour les achats ultérieurs
+          </label>
+        </div>
+    
+        <button type="submit">Enregistrer</button>
+      </form>
+    </div>
+    
 
     <!-- Livraison -->
     <div class="tab" id="livraison">
       <h1>Adresse de Livraison</h1>
       <form>
         <label>Adresse :</label>
-        <input type="text" name="adresse" placeholder="15 rue de Paris" />
+        <input type="text" name="adresse" placeholder="Rue" />
 
         <label>Ville :</label>
-        <input type="text" name="ville" placeholder="Montpellier" />
+        <input type="text" name="ville" placeholder="Ville" />
 
         <label>Code postal :</label>
-        <input type="text" name="code" placeholder="34000" />
+        <input type="text" name="code" placeholder="Code Postal" />
 
         <button type="submit">Enregistrer l’adresse</button>
       </form>

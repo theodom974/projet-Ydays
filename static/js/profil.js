@@ -1,4 +1,4 @@
-// ------------- Affiche le prénom depuis l'API -------------
+// Affiche le prénom depuis l'API
 fetch('/api/user')
   .then(res => res.json())
   .then(data => {
@@ -10,7 +10,7 @@ fetch('/api/user')
     }
   });
 
-// ------------- Onglets interactifs ----------------
+// Onglets interactifs
 const onglets = document.querySelectorAll(".profil-menu li");
 const tabs = document.querySelectorAll(".tab");
 
@@ -22,40 +22,40 @@ onglets.forEach(onglet => {
     onglet.classList.add("active");
     const id = onglet.getAttribute("data-tab");
     const tabAffiche = document.getElementById(id);
-    if (tabAffiche) {
-      tabAffiche.style.display = "block";
-    }
+    if (tabAffiche) tabAffiche.style.display = "block";
   });
 });
 
-// ------------- Paiement ----------------
-function savePaiement() {
-  const carte = document.getElementById("carte").value;
+// Paiement - Sauvegarde
+document.querySelector("#form-paiement").addEventListener("submit", function(e) {
+  e.preventDefault();
+  const carte = this.querySelector("[name='carte']").value;
+  const mm = this.querySelector("[name='mm']").value;
+  const cvv = this.querySelector("[name='cvv']").value;
 
   fetch("/api/paiement", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ carte })
+    body: JSON.stringify({ carte, mm, cvv })
   })
   .then(res => res.json())
   .then(data => {
     if (data.success) alert("Moyen de paiement enregistré !");
   });
-}
+});
 
-function chargerPaiement() {
-  fetch("/api/paiement")
-    .then(res => res.json())
-    .then(data => {
-      if (data.success && data.carte) {
-        document.getElementById("carte").value = data.carte;
-      }
-    });
-}
-chargerPaiement();
+// Paiement - Chargement
+fetch("/api/paiement")
+  .then(res => res.json())
+  .then(data => {
+    if (data.success) {
+      document.querySelector("[name='carte']").value = data.carte || "";
+      document.querySelector("[name='mm']").value = data.mm || "";
+      document.querySelector("[name='cvv']").value = data.cvv || "";
+    }
+  });
 
-
-// ------------- Livraison ----------------
+// Livraison
 document.querySelector("#livraison form").addEventListener("submit", function(e) {
   e.preventDefault();
   const adresse = this.adresse.value;
@@ -73,21 +73,17 @@ document.querySelector("#livraison form").addEventListener("submit", function(e)
   });
 });
 
-function chargerLivraison() {
-  fetch("/api/livraison")
-    .then(res => res.json())
-    .then(data => {
-      if (data.success) {
-        document.querySelector("[name='adresse']").value = data.adresse;
-        document.querySelector("[name='ville']").value = data.ville;
-        document.querySelector("[name='code']").value = data.code;
-      }
-    });
-}
-chargerLivraison();
+fetch("/api/livraison")
+  .then(res => res.json())
+  .then(data => {
+    if (data.success) {
+      document.querySelector("[name='adresse']").value = data.adresse;
+      document.querySelector("[name='ville']").value = data.ville;
+      document.querySelector("[name='code']").value = data.code;
+    }
+  });
 
-
-// ------------- Préférences ----------------
+// Préférences
 document.querySelector("#preferences form").addEventListener("submit", function(e) {
   e.preventDefault();
   const langue = this.langue.value;
@@ -104,20 +100,16 @@ document.querySelector("#preferences form").addEventListener("submit", function(
   });
 });
 
-function chargerPreferences() {
-  fetch("/api/preferences")
-    .then(res => res.json())
-    .then(data => {
-      if (data.success) {
-        document.querySelector("[name='langue']").value = data.langue;
-        document.querySelector("[name='mode']").value = data.mode;
-      }
-    });
-}
-chargerPreferences();
+fetch("/api/preferences")
+  .then(res => res.json())
+  .then(data => {
+    if (data.success) {
+      document.querySelector("[name='langue']").value = data.langue;
+      document.querySelector("[name='mode']").value = data.mode;
+    }
+  });
 
-
-// ------------- Visibilité ----------------
+// Visibilité
 document.querySelector("#visibilite form").addEventListener("submit", function(e) {
   e.preventDefault();
   const profilPublic = this.profilPublic.value;
@@ -134,14 +126,11 @@ document.querySelector("#visibilite form").addEventListener("submit", function(e
   });
 });
 
-function chargerVisibilite() {
-  fetch("/api/visibilite")
-    .then(res => res.json())
-    .then(data => {
-      if (data.success) {
-        document.querySelector("[name='profilPublic']").value = data.profil;
-        document.querySelector("[name='emailVisible']").value = data.email;
-      }
-    });
-}
-chargerVisibilite();
+fetch("/api/visibilite")
+  .then(res => res.json())
+  .then(data => {
+    if (data.success) {
+      document.querySelector("[name='profilPublic']").value = data.profil;
+      document.querySelector("[name='emailVisible']").value = data.email;
+    }
+  });
