@@ -39,6 +39,7 @@ def profil():
 @app.route("/login", methods=["POST"])
 def login():
     data = request.get_json()
+    print("Tentative de login :", data)
     email = data.get("email")
     password = data.get("password")
 
@@ -121,9 +122,109 @@ def get_produits():
 def get_image(filename):
     return send_from_directory('image', filename)
 
+# ---------------------- PAIMENTS ----------------------
+@app.route('/api/paiement', methods=["GET", "POST"])
+def paiement():
+    if "user_id" not in session:
+        return jsonify({"success": False}), 401
+
+    user_id = session["user_id"]
+    conn = sqlite3.connect("users.db")
+    cursor = conn.cursor()
+
+    if request.method == "POST":
+        data = request.get_json()
+        carte = data.get("carte")
+        cursor.execute("REPLACE INTO paiements (id, user_id, carte) VALUES ((SELECT id FROM paiements WHERE user_id = ?), ?, ?)", (user_id, user_id, carte))
+        conn.commit()
+        conn.close()
+        return jsonify({"success": True})
+
+    cursor.execute("SELECT carte FROM paiements WHERE user_id = ?", (user_id,))
+    result = cursor.fetchone()
+    conn.close()
+    return jsonify({"success": True, "carte": result[0] if result else ""})
+
+# ---------------------- LIVRAISON ----------------------
+@app.route("/api/livraison", methods=["GET", "POST"])
+def livraison():
+    user_id = session.get("user_id")
+    if not user_id:
+        return jsonify({"success": False})
+
+    conn = sqlite3.connect("users.db")
+    cursor = conn.cursor()
+
+    if request.method == "GET":
+        cursor.execute("SELECT adresse, ville, code_postal FROM users WHERE id = ?", (user_id,))
+        row = cursor.fetchone()
+        conn.close()
+        if row:
+            return jsonify({"success": True, "adresse": row[0], "ville": row[1], "code": row[2]})
+        return jsonify({"success": False})
+
+    data = request.get_json()
+    cursor.execute("UPDATE users SET adresse = ?, ville = ?, code_postal = ? WHERE id = ?",
+                   (data["adresse"], data["ville"], data["code"], user_id))
+    conn.commit()
+    conn.close()
+    return jsonify({"success": True})
+
+# ---------------------- PREFERENCES ----------------------
+@app.route("/api/preferences", methods=["GET", "POST"])
+def preferences():
+    if "user_id" not in session:
+        return jsonify({"success": False})
+
+    user_id = session["user_id"]
+    conn = sqlite3.connect("users.db")
+    cursor = conn.cursor()
+
+    if request.method == "POST":
+        data = request.get_json()
+        langue = data.get("langue", "Français")
+        mode = data.get("mode", "Désactivé")
+
+        cursor.execute("INSERT OR REPLACE INTO preferences (user_id, langue, mode) VALUES (?, ?, ?)",
+                       (user_id, langue, mode))
+        conn.commit()
+        conn.close()
+        return jsonify({"success": True})
+
+    cursor.execute("SELECT langue, mode FROM preferences WHERE user_id = ?", (user_id,))
+    row = cursor.fetchone()
+    conn.close()
+    if row:
+        return jsonify({"success": True, "langue": row[0], "mode": row[1]})
+    return jsonify({"success": True, "langue": "Français", "mode": "Désactivé"})
+
+# ---------------------- VISIBILITE ----------------------
+@app.route("/api/visibilite", methods=["POST", "GET"])
+def visibilite():
+    user_id = session.get("user_id")
+    if not user_id:
+        return jsonify({"success": False})
+
+    conn = sqlite3.connect("users.db")
+    cursor = conn.cursor()
+
+    if request.method == "GET":
+        cursor.execute("SELECT profil_public, email_visible FROM users WHERE id = ?", (user_id,))
+        row = cursor.fetchone()
+        conn.close()
+        if row:
+            return jsonify({"success": True, "profil": row[0], "email": row[1]})
+        return jsonify({"success": False})
+
+    data = request.get_json()
+    cursor.execute("UPDATE users SET profil_public = ?, email_visible = ? WHERE id = ?",
+                   (data["profilPublic"], data["emailVisible"], user_id))
+    conn.commit()
+    conn.close()
+    return jsonify({"success": True})
+
 # ---------------------- LANCEMENT ----------------------
 
 if __name__ == '__main__':
-    port = int(os.environ.get('PORT', 10000))
+    port = int(os.environ.get('PORT', 5000))
     app.run(debug=False, host='0.0.0.0', port=port)
-

@@ -30,7 +30,13 @@
       <li data-tab="preferences">Préférences</li>
       <li data-tab="visibilite">Visibilité</li>
     </ul>
-  </aside>
+  </aside>tab {
+    display: none;
+  }
+ 
+  .tab.active {
+    display: block;
+  }
 
   <section class="profil-content">
     <!-- Informations -->
@@ -51,24 +57,12 @@
     </div>
 
     <!-- Paiement -->
-    <div class="tab" id="paiement">
-      <h1>Moyens de Paiement</h1>
-      <form>
-        <label>Numéro de carte :</label>
-        <input type="text" name="carte" />
-
-        <label>Date d’expiration :</label>
-        <input type="month" name="expiration" />
-
-        <label>CVV :</label>
-        <input type="month" name="CVV" />
-
-        <label>Nom sur la carte :</label>
-        <input type="text" name="nomcarte"  />
-
-        <button type="submit">Ajouter le moyen de paiement</button>
-      </form>
-    </div>
+    <div class="tab" id="paiement" style="display: none;">
+        <h1>Moyens de Paiement</h1>
+        <input type="text" id="carte" placeholder="**** **** **** 1234" />
+        <button onclick="savePaiement()">Enregistrer</button>
+      </div>
+      
 
     <!-- Livraison -->
     <div class="tab" id="livraison">

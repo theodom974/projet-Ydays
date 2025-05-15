@@ -121,13 +121,7 @@ body {
    line-height: 1.6;
  }
  
- .tab {
-   display: none;
- }
  
- .tab.active {
-   display: block;
- }
  
  /* --------- RESPONSIVE --------- */
  @media screen and (max-width: 768px) {
@@ -197,4 +191,10 @@ body {
  form button:hover {
    background-color: grey;
  }
-  
+ .tab {
+   display: none;
+ }
+ .tab.active {
+   display: block;
+ }
+ 
