@@ -69,7 +69,7 @@ projet-Ydays/
     Delattre Ugo
     Chakir Anas
     BENDJELLOUL Kenzi
-    
+    Yecke Anderson
 
 ☁️ Déployé sur Render
 
