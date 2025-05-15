@@ -1,31 +1,35 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FeyZin T4</title>
-    <link rel="stylesheet" href="/static/style.css">
-    <link rel="icon" type="image/x-icon" href="image/icon.png">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FZT4 - Boutique Sport</title>
+    <link rel="stylesheet" href="/static/style.css" />
+    <link rel="icon" type="image/png" href="/image/icon.png" />
 </head>
 <body>
     <header>
-        <img src="image/logo.png" width="200" class="fade-in-element">
-        
+        <div class="logo-container">
+            <img src="/image/logo.png" alt="Logo FZT4" class="logo fade-in-element" />
+        </div>
+
         <div class="search-container">
             <form id="search-form">
-                <input type="text" id="search-input" placeholder="Rechercher...">
-                <button type="submit">Rechercher</button>
+                <input type="text" id="search-input" placeholder="Rechercher un produit..." />
+                <button type="submit">🔍</button>
             </form>
         </div>
 
         <div class="onglets">
-            <a href="profil.html"><img src="image/profil.png" width="40"></a>
-            <a href="panier.html"><img src="image/panier.png" width="40"></a>
+            <a href="profil.html"><img src="/image/profil.png" alt="Profil" /></a>
+            <a href="panier.html"><img src="/image/panier.png" alt="Panier" /></a>
         </div>
     </header>
 
     <main>
-        <h2>Nos Produits</h2>
+        <section class="hero">
+            <h1>Nos Produits</h1>
+        </section>
         <section class="products" id="products"></section>
     </main>
 

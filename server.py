@@ -109,7 +109,7 @@ def api_user():
 @app.route('/api/produits')
 def get_produits():
     produits = [
-        {"id": 1, "nom": "Sweat Adidas", "prix": 60, "image": "image/article/sweat.png"},
+        {"id": 1, "nom": "Sweat Adidas", "prix": 60, "image": "image/article/addidas.png"},
         {"id": 2, "nom": "Jogging Nike", "prix": 60, "image": "image/article/jogging.png"},
         {"id": 3, "nom": "Crampon Nike", "prix": 120, "image": "image/article/crampon.png"},
         {"id": 4, "nom": "Maillot PSG", "prix": 100, "image": "image/article/psg.png"}

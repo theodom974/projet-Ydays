@@ -1,13 +1,13 @@
 /* ---------- FOND & GLOBAL ---------- */
 body {
-   font-family: Arial, sans-serif;
-   background-image: url(/image/fond.png);
-   background-repeat: no-repeat;
-   background-size: cover;
-   margin: 0;
-   padding: 0;
-   color: #333;
- }
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('/image/fond.png') no-repeat center center fixed;
+  background-size: cover;
+  color: #fff;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
  
  /* ---------- HEADER ---------- */
  header {

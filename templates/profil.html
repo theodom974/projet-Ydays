@@ -7,18 +7,21 @@
   <link rel="icon" type="image/x-icon" href="/image/icon.png" />
 </head>
 <body>
-
-<header>
-  <img src="/image/logo.png" width="200" />
-  <form action="/search" method="GET">
-    <input type="text" placeholder="Rechercher..." name="query" />
-    <button type="submit">Rechercher</button>
-  </form>
-  <nav>
-    <a href="/"><img src="/image/home.png" width="40" title="Accueil" /></a>
-    <a href="/logout"><img src="/image/loung.png" width="40" title="Déconnexion" /></a>
-  </nav>
-</header>
+  <header>
+    <img src="/image/logo.png" class="logo" alt="Logo" />
+  
+    <div class="search-container">
+      <form action="/search" method="GET" class="search-bar">
+        <input id="search-input" type="text" placeholder="Rechercher un produit..." name="query" />
+          <button type="submit">🔍</button>
+        </button>
+      </form>
+    </div>
+    <div class="onglets">
+      <a href="/"><img src="/image/home.png" title="Accueil" /></a>
+      <a href="/logout"><img src="/image/loung.png" title="Déconnexion" /></a>
+    </div>
+  </header>
 
 <main class="profil-page">
   <aside class="profil-menu">

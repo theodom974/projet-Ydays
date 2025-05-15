@@ -1,62 +1,74 @@
-/* --------- BASE --------- */
+/* ----------- BASE & FOND ----------- */
 body {
-  font-family: Arial, sans-serif;
-  background-image: url(/image/fond.png);
-  background-repeat: no-repeat;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('/image/fond.png') no-repeat center center fixed;
   background-size: cover;
+  color: #fff;
   margin: 0;
   padding: 0;
-  color: #333;
 }
 
-/* --------- HEADER --------- */
+/* ----------- HEADER ----------- */
 header {
-  background: #e6e6e6;
-  padding: 10px 20px;
+  background: rgba(255, 255, 255, 0.95);
+  padding: 10px 40px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  flex-wrap: wrap;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
-header img {
+/* Logo */
+.logo {
+  width: 150px;
   height: auto;
 }
 
-form {
+/* Recherche */
+.search-container {
+  flex: 1;
   display: flex;
+  justify-content: center;
   align-items: center;
-  gap: 10px;
 }
 
-input[type="text"] {
-  width: 200px;
-  padding: 8px 12px;
-  font-size: 14px;
+#search-input {
+  width: 300px;
+  padding: 12px;
   border: 1px solid #ccc;
-  border-radius: 5px;
+  border-radius: 25px 0 0 25px;
+  font-size: 15px;
 }
 
-button {
-  padding: 8px 16px;
-  font-size: 14px;
-  background-color: black;
-  color: white;
+button[type="submit"] {
+  padding: 12px 20px;
   border: none;
-  border-radius: 5px;
+  background: black;
+  color: white;
+  font-size: 15px;
+  border-radius: 0 25px 25px 0;
   cursor: pointer;
-  transition: background 0.3s ease;
+  transition: background 0.3s;
 }
 
-button:hover {
-  background-color: grey;
+button[type="submit"]:hover {
+  background: #333;
 }
 
-nav a {
-  margin-left: 10px;
+/* Icônes du profil et panier */
+.onglets {
+  display: flex;
+  gap: 15px;
+}
+.onglets img {
+  width: 35px;
+  transition: transform 0.3s ease;
+}
+.onglets img:hover {
+  transform: scale(1.1);
 }
 
-/* --------- STRUCTURE PRINCIPALE --------- */
+/* ----------- PROFIL PAGE ----------- */
 .profil-page {
   display: flex;
   max-width: 1100px;
@@ -67,7 +79,6 @@ nav a {
   overflow: hidden;
 }
 
-/* --------- MENU DE GAUCHE --------- */
 .profil-menu {
   width: 250px;
   background: #f3f3f3;
@@ -79,6 +90,7 @@ nav a {
 .profil-menu h2 {
   font-size: 20px;
   margin-bottom: 15px;
+  color: #000;
 }
 
 .profil-menu ul {
@@ -92,6 +104,7 @@ nav a {
   border-bottom: 1px solid #ddd;
   cursor: pointer;
   transition: background-color 0.2s ease;
+  color: #000;
 }
 
 .profil-menu li:hover {
@@ -104,50 +117,47 @@ nav a {
   border-left: 4px solid black;
 }
 
-/* --------- CONTENU DE DROITE --------- */
+/* ----------- PROFIL CONTENT ----------- */
 .profil-content {
   flex: 1;
-  padding: 30px;
+  padding: 40px;
   text-align: left;
+  color: #000;
 }
 
 .profil-content h1 {
-  font-size: 24px;
-  margin-bottom: 15px;
+  font-size: 28px;
+  margin-bottom: 20px;
 }
 
-.profil-content p {
-  font-size: 16px;
-  line-height: 1.6;
-}
-
-/* --------- FORMULAIRES --------- */
 form {
   display: flex;
   flex-direction: column;
   gap: 15px;
+  max-width: 500px;
   margin-top: 20px;
-  max-width: 400px;
 }
 
 form input,
 form select {
-  padding: 10px;
-  border-radius: 6px;
+  padding: 12px;
+  font-size: 15px;
+  border-radius: 8px;
   border: 1px solid #ccc;
 }
 
 form button {
   background-color: black;
   color: white;
-  padding: 12px;
-  border-radius: 6px;
+  padding: 14px;
+  border-radius: 8px;
   cursor: pointer;
   border: none;
+  transition: background 0.3s;
 }
 
 form button:hover {
-  background-color: grey;
+  background-color: #333;
 }
 
 .tab {
@@ -158,58 +168,71 @@ form button:hover {
   display: block;
 }
 
-/* -------- PAIEMENT STYLE PREMIUM -------- */
-#paiement h1 {
-  font-size: 22px;
-  margin-bottom: 20px;
-}
-
-.form-paiement-container {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  max-width: 600px;
-  margin: auto;
-}
-
-.form-paiement-top {
+/* ----------- PAIEMENT FORMULAIRE ----------- */
+.paiement-ligne {
   display: flex;
   gap: 10px;
 }
 
-.form-paiement-top input {
+.paiement-ligne input {
   flex: 1;
-  padding: 10px;
-  font-size: 14px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
 }
 
-.form-paiement-checkbox {
+.paiement-options {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  color: #000;
+}
+
+.paiement-options label {
   display: flex;
   align-items: center;
   gap: 8px;
-  font-size: 14px;
 }
 
-.form-paiement-extra {
+/* ----------- TRANSITIONS ----------- */
+.fade-in-element {
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.fade-in-element.visible {
+  opacity: 1;
+}
+.search-bar {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  font-size: 13px;
 }
 
-.form-paiement-extra a {
-  color: black;
-  text-decoration: underline;
+.search-bar input {
+  width: 300px;
+  padding: 12px 16px;
+  border: 1px solid #ccc;
+  border-radius: 25px 0 0 25px;
+  font-size: 15px;
+  outline: none;
 }
 
-.form-paiement-extra a:hover {
-  color: grey;
+.search-bar button {
+  background: black;
+  border: none;
+  padding: 12px 18px;
+  border-radius: 0 25px 25px 0;
+  cursor: pointer;
+  transition: background 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.form-paiement-container button {
-  width: fit-content;
-  align-self: center;
-  margin-top: 10px;
+.search-bar button:hover {
+  background: #333;
+}
+
+.search-bar button img {
+  width: 18px;
+  height: 18px;
+  filter: invert(1); /* rend l'icône blanche */
 }

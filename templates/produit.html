@@ -1,66 +1,33 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <title>Mon Profil</title>
-  <link rel="stylesheet" href="/static/profil.css" />
-  <link rel="icon" type="image/x-icon" href="/image/icon.png" />
+    <meta charset="UTF-8">
+    <title>Fiche Produit</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link rel="icon" type="image/x-icon" href="image/icon.png">
 </head>
 <body>
 
 <header>
-  <img src="/image/logo.png" width="200" />
-  <form action="/search" method="GET">
-    <input type="text" placeholder="Rechercher..." name="query" />
-    <button type="submit">Rechercher</button>
-  </form>
-  <nav>
-    <a href="/"><img src="/image/home.png" width="40" title="Accueil" /></a>
-    <a href="/logout"><img src="/image/loung.png" width="40" title="Déconnexion" /></a>
-  </nav>
+    <img src="image/logo.png" width="200">
+    <div class="search-container">
+        <form action="/search" method="GET">
+            <input type="text" placeholder="Rechercher..." name="query">
+            <button type="submit">Rechercher</button>
+        </form>
+    </div>
+    <nav>
+        <a href="/"><img src="image/home.png" width="40"></a>
+        <a href="profil.html"><img src="image/profil.png" width="40"></a>
+    </nav>
 </header>
 
-<main class="profil-page">
-  <aside class="profil-menu">
-    <h2>Mon Compte</h2>
-    <ul>
-      <li data-tab="informations" class="active">Informations</li>
-      <li data-tab="paiement">Paiement</li>
-      <li data-tab="livraison">Livraison</li>
-      <li data-tab="preferences">Préférences</li>
-      <li data-tab="visibilite">Visibilité</li>
-    </ul>
-  </aside>
-
-  <section class="profil-content">
-    <div class="tab active" id="informations">
-      <h1 id="bonjour">Bonjour !</h1>
-      <p>Bienvenue dans votre espace personnel.</p>
-      <p>Vous pouvez ici consulter et modifier vos informations personnelles.</p>
+<main class="panier-page">
+    <div class="product-detail" id="fiche-produit">
+        <!-- contenu injecté dynamiquement -->
     </div>
-
-    <div class="tab" id="paiement">
-      <h1>Moyens de Paiement</h1>
-      <p>Ajoutez, modifiez ou supprimez vos cartes bancaires.</p>
-    </div>
-
-    <div class="tab" id="livraison">
-      <h1>Adresses de Livraison</h1>
-      <p>Gérez vos adresses de livraison préférées.</p>
-    </div>
-
-    <div class="tab" id="preferences">
-      <h1>Préférences</h1>
-      <p>Choisissez vos préférences de navigation ou de communication.</p>
-    </div>
-
-    <div class="tab" id="visibilite">
-      <h1>Visibilité</h1>
-      <p>Contrôlez qui peut voir vos informations publiques.</p>
-    </div>
-  </section>
 </main>
 
-<script src="/static/js/profil.js"></script>
+<script src="/static/js/produit.js"></script>
 </body>
 </html>
