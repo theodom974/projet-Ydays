@@ -3,6 +3,16 @@ from werkzeug.security import generate_password_hash, check_password_hash
 import sqlite3
 import os
 
+def init_db():
+    if not os.path.exists("users.db"):
+        print("📦 Création automatique de la base users.db")
+        conn = sqlite3.connect("users.db")
+        with open("init.sql", "r") as f:
+            conn.executescript(f.read())
+        conn.close()
+
+init_db()  # ← ajoute cette ligne pour que ce soit appelé au lancement
+
 app = Flask(__name__, static_folder='static', template_folder='templates')
 app.secret_key = "feyzin-secret-key"  # clé de session
 
