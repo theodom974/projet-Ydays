@@ -2,16 +2,77 @@ from flask import Flask, render_template, request, jsonify, send_from_directory,
 from werkzeug.security import generate_password_hash, check_password_hash
 import sqlite3
 import os
+from flask_mail import Mail, Message
+import secrets
+from itsdangerous import URLSafeTimedSerializer
 
-def init_db():
-    if not os.path.exists("users.db"):
-        print("📦 Création automatique de la base users.db")
-        conn = sqlite3.connect("users.db")
-        with open("init.sql", "r") as f:
-            conn.executescript(f.read())
-        conn.close()
+app = Flask(__name__, static_folder="static", template_folder="templates")
+app.secret_key = "feyzin-secret-key"
 
-init_db()  # ← ajoute cette ligne pour que ce soit appelé au lancement
+# ------------------ CONFIG EMAIL ------------------
+app.config['MAIL_SERVER'] = 'smtp.gmail.com'
+app.config['MAIL_PORT'] = 587
+app.config['MAIL_USE_TLS'] = True
+app.config['MAIL_USERNAME'] = 'theo97460d@gmail.com'
+app.config['MAIL_PASSWORD'] = 'usxh nalm gvpe fqpv '
+app.config['MAIL_DEFAULT_SENDER'] = 'theo97460d@gmail.com'
+
+mail = Mail(app)
+s = URLSafeTimedSerializer(app.secret_key)
+
+# ------------------ MOT DE PASSE OUBLIÉ ------------------
+
+@app.route("/reset-password", methods=["POST"])
+def reset_password():
+    data = request.get_json()
+    email = data.get("email")
+
+    conn = sqlite3.connect("users.db")
+    cursor = conn.cursor()
+    cursor.execute("SELECT id FROM users WHERE email = ?", (email,))
+    user = cursor.fetchone()
+    conn.close()
+
+    if not user:
+        return jsonify({"success": False, "message": "Aucun compte trouvé pour cet email."})
+
+    token = s.dumps(email, salt="password-reset-salt")
+    reset_url = f"https://projet-ydays.onrender.com/change-password/{token}"
+
+    try:
+        msg = Message("Réinitialisation de mot de passe",
+                      recipients=[email])
+        msg.body = f"Pour réinitialiser votre mot de passe, cliquez ici : {reset_url}"
+        mail.send(msg)
+        return jsonify({"success": True, "message": "Email envoyé."})
+    except Exception as e:
+        print("Erreur envoi mail:", e)
+        return jsonify({"success": False, "message": "Erreur lors de l'envoi de l'email."})
+
+
+@app.route("/change-password/<token>", methods=["GET", "POST"])
+def change_password(token):
+    try:
+        email = s.loads(token, salt="password-reset-salt", max_age=3600)
+    except Exception as e:
+        return "Lien expiré ou invalide", 400
+
+    if request.method == "GET":
+        return render_template("change-password.html", email=email)
+
+    data = request.get_json()
+    new_password = data.get("password")
+    if not new_password:
+        return jsonify({"success": False, "message": "Mot de passe requis"})
+
+    hashed = generate_password_hash(new_password)
+    conn = sqlite3.connect("users.db")
+    cursor = conn.cursor()
+    cursor.execute("UPDATE users SET password = ? WHERE email = ?", (hashed, email))
+    conn.commit()
+    conn.close()
+    return jsonify({"success": True, "message": "Mot de passe mis à jour."})
+
 
 app = Flask(__name__, static_folder='static', template_folder='templates')
 app.secret_key = "feyzin-secret-key"  # clé de session
@@ -43,6 +104,13 @@ def profil():
     if "user_id" not in session:
         return redirect("/auth.html")
     return render_template('profil.html')
+@app.route("/reset.html")
+def reset_page():   
+    return render_template("reset.html")
+@app.route("/change-password.html")
+def change_password_page():
+    return render_template("change-password.html")
+
 
 # ---------------------- AUTHENTIFICATION ----------------------
 

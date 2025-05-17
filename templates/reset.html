@@ -1,0 +1,24 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Mot de passe oublié</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <main class="auth-container">
+    <div class="auth-box">
+      <div class="auth-form">
+        <h2>Réinitialiser votre mot de passe</h2>
+        <form id="reset-form">
+          <input type="email" name="email" placeholder="Votre email" required>
+          <button type="submit">Envoyer</button>
+          <p id="reset-message" class="erreur-msg"></p>
+        </form>
+      </div>
+    </div>
+  </main>
+  <script src="/static/js/reset.js"></script>
+</body>
+</html>
