@@ -8,166 +8,198 @@ body {
   padding: 0;
   text-align: center;
 }
- 
- /* ---------- HEADER ---------- */
- header {
-   background: #e6e6e6;
-   padding: 10px 20px;
-   display: flex;
-   align-items: center;
-   justify-content: space-between;
-   flex-wrap: wrap;
- }
- 
- .search-container {
-   flex-grow: 1;
-   display: flex;
-   justify-content: center;
-   gap: 10px;
- }
- 
- .search-container input {
-   padding: 8px;
-   border-radius: 5px;
- }
- 
- .search-container button {
-   padding: 8px 12px;
-   background: #222;
-   color: #fff;
-   border: none;
-   border-radius: 5px;
-   cursor: pointer;
- }
- 
- nav a {
-   margin-left: 15px;
- }
- 
- /* ---------- SECTION PANIER ---------- */
- .panier-section {
-   max-width: 1000px;
-   margin: 40px auto;
-   background: rgba(255, 255, 255, 0.92);
-   border-radius: 15px;
-   box-shadow: 0 6px 25px rgba(0, 0, 0, 0.15);
-   padding: 30px;
- }
- 
- .panier-section h1 {
-   font-size: 32px;
-   text-align: center;
-   margin-bottom: 30px;
- }
- 
- /* ---------- ARTICLES ---------- */
- .article-panier {
-   display: flex;
-   gap: 25px;
-   padding: 20px;
-   background: #f9f9f9;
-   border-radius: 12px;
-   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-   align-items: center;
-   margin-bottom: 20px;
-   transition: transform 0.25s ease;
- }
- 
- .article-panier:hover {
-   transform: translateY(-3px);
- }
- 
- .img-panier {
-   width: 130px;
-   height: 130px;
-   border-radius: 12px;
-   object-fit: cover;
- }
- 
- /* ---------- INFOS PRODUIT ---------- */
- .info-panier {
-   flex: 1;
-   display: flex;
-   flex-direction: column;
-   gap: 8px;
- }
- 
- .info-panier h3 {
-   margin: 0;
-   font-size: 20px;
- }
- 
- .info-ligne {
-   font-size: 14px;
-   color: #555;
- }
- 
- /* ---------- SUPPRIMER ---------- */
- .btn-supprimer {
-   align-self: flex-start;
-   margin-top: 10px;
-   padding: 10px 18px;
-   background-color: #e60000;
-   color: #fff;
-   border: none;
-   border-radius: 6px;
-   font-size: 14px;
-   font-weight: bold;
-   cursor: pointer;
-   transition: background-color 0.3s ease;
- }
- 
- .btn-supprimer:hover {
-   background-color: #cc0000;
- }
- 
- /* ---------- TOTAL & PAIEMENT ---------- */
- .total-panier {
-   display: flex;
-   justify-content: space-between;
-   font-size: 20px;
-   font-weight: bold;
-   padding: 20px 0;
- }
- 
- .btn-paiement-container {
-   text-align: center;
-   margin-top: 30px;
- }
- 
- .btn-paiement {
-   background-color: #000;
-   color: white;
-   padding: 15px 30px;
-   font-size: 18px;
-   border: none;
-   border-radius: 8px;
-   cursor: pointer;
-   font-weight: bold;
-   transition: background-color 0.3s ease;
- }
- 
- .btn-paiement:hover {
-   background-color: #ffd700;
-   color: #000;
- }
- 
- /* ---------- RESPONSIVE ---------- */
- @media screen and (max-width: 768px) {
-   .article-panier {
-     flex-direction: column;
-     align-items: center;
-   }
- 
-   .img-panier {
-     width: 100%;
-     height: auto;
-   }
- 
-   .total-panier {
-     flex-direction: column;
-     align-items: center;
-     gap: 10px;
-   }
- }
- 
+
+/* ---------- HEADER ---------- */
+header {
+  background: #e6e6e6;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.search-container {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.search-container input {
+  padding: 8px;
+  border-radius: 20px;
+  border: 1px solid #ccc;
+  width: 220px;
+}
+
+.search-container button {
+  padding: 8px 16px;
+  background: #000;
+  color: #fff;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.search-container button:hover {
+  background: #444;
+}
+
+nav a {
+  margin-left: 15px;
+}
+
+/* ---------- SECTION PANIER ---------- */
+.panier-section {
+  max-width: 1000px;
+  margin: 40px auto;
+  background: rgba(255, 255, 255, 0.92);
+  border-radius: 15px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+  padding: 30px;
+  color: #222;
+}
+
+/* Nouveau titre panier stylisé */
+.panier-section h1,
+.titre-panier {
+  font-size: 38px;
+  margin-bottom: 30px;
+  color: #111;
+  text-shadow: 1px 1px 2px #fff;
+}
+
+/* ---------- ARTICLES ---------- */
+.article-panier {
+  display: flex;
+  gap: 25px;
+  padding: 20px;
+  background: #f9f9f9;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  align-items: center;
+  margin-bottom: 20px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.article-panier:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.img-panier {
+  width: 130px;
+  height: 130px;
+  border-radius: 12px;
+  object-fit: cover;
+}
+
+/* ---------- INFOS PRODUIT ---------- */
+.info-panier {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  text-align: left;
+}
+
+.info-panier h3 {
+  margin: 0;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.info-ligne {
+  font-size: 15px;
+  color: #555;
+}
+
+/* ---------- SUPPRIMER ---------- */
+.btn-supprimer {
+  align-self: flex-start;
+  margin-top: 10px;
+  padding: 10px 18px;
+  background-color: #e60000;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-supprimer:hover {
+  background-color: #cc0000;
+}
+
+/* ---------- TOTAL & PAIEMENT ---------- */
+.total-panier {
+  display: flex;
+  justify-content: space-between;
+  font-size: 20px;
+  font-weight: bold;
+  padding: 25px 10px 10px;
+  border-top: 1px solid #ccc;
+  margin-top: 20px;
+  color: #fff;
+}
+
+.btn-paiement-container {
+  text-align: center;
+  margin-top: 30px;
+}
+
+.btn-paiement {
+  background-color: #000;
+  color: white;
+  padding: 15px 30px;
+  font-size: 18px;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  font-weight: bold;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease-in-out;
+}
+
+.btn-paiement:hover {
+  background-color: #ffd700;
+  color: #000;
+  transform: scale(1.05);
+}
+
+/* ---------- RESPONSIVE ---------- */
+@media screen and (max-width: 768px) {
+  .article-panier {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .info-panier {
+    text-align: center;
+  }
+
+  .img-panier {
+    width: 90%;
+    max-width: 200px;
+    height: auto;
+  }
+
+  .total-panier {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+}
+.article-panier {
+  transition: opacity 0.4s ease, transform 0.3s ease;
+}
+
+.article-panier.removed {
+  opacity: 0;
+  transform: translateX(-20px);
+}

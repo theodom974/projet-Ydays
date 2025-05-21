@@ -1,40 +1,43 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mon Panier</title>
-    <link rel="stylesheet" href="/static/panier.css">
-    <link rel="icon" type="image/x-icon" href="image/icon.png">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mon Panier</title>
+  <link rel="stylesheet" href="/static/panier.css">
+  <link rel="icon" type="image/x-icon" href="image/icon.png">
 </head>
 <body>
 
 <header>
-    <img src="image/logo.png" width="200">
-    <div class="search-container">
-        <form action="/search" method="GET">
-            <input type="text" placeholder="Rechercher..." name="query">
-            <button type="submit">Rechercher</button>
-        </form>
-    </div>
-    <nav>
-        <a href="/"><img src="image/home.png" width="40"></a>
-        <a href="profil.html"><img src="image/profil.png" width="40"></a>
-    </nav>
+  <img src="image/logo.png" width="160" alt="Logo">
+  <div class="search-container">
+    <form action="/search" method="GET">
+      <input type="text" placeholder="Rechercher..." name="query">
+      <button type="submit">Rechercher</button>
+    </form>
+  </div>
+  <nav>
+    <a href="/"><img src="image/home.png" width="36" alt="Accueil"></a>
+    <a href="profil.html"><img src="image/profil.png" width="36" alt="Profil"></a>
+  </nav>
 </header>
 
 <main>
-    <h1>Mon Panier</h1>
-    <section id="panier-contenu" class="panier-section"></section>
-    <div class="total-panier">
-        Total : <span id="total">0 €</span>
-    </div>
-    <div style="text-align:center; margin-top: 20px;">
-        <a href="confirmation.html">
-            <button class="ajouter-panier">Procéder au paiement</button>
-        </a>
-    </div>
-    
+  <h1 class="titre-panier">🛒 Mon Panier</h1>
+
+  <section id="panier-contenu" class="panier-section">
+  </section>
+
+  <div class="total-panier">
+    <p>Total : <span id="total">0 €</span></p>
+  </div>
+
+  <div class="btn-container">
+    <a href="confirmation.html">
+      <button class="btn-paiement">Procéder au paiement</button>
+    </a>
+  </div>
 </main>
 
 <script src="/static/js/panier.js"></script>
