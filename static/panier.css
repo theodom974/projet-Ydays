@@ -20,32 +20,34 @@ header {
 }
 
 .search-container {
-  flex-grow: 1;
+  flex: 1;
   display: flex;
   justify-content: center;
-  gap: 10px;
+  align-items: center;
 }
 
 .search-container input {
-  padding: 8px;
-  border-radius: 20px;
+  width: 300px;
+  padding: 12px;
   border: 1px solid #ccc;
-  width: 220px;
+  border-radius: 25px 0 0 25px;
+  font-size: 15px;
 }
 
-.search-container button {
-  padding: 8px 16px;
-  background: #000;
-  color: #fff;
+button[type="submit"] {
+  padding: 12px 20px;
   border: none;
-  border-radius: 20px;
+  background: black;
+  color: white;
+  font-size: 15px;
+  border-radius: 0 25px 25px 0;
   cursor: pointer;
   transition: background 0.3s;
 }
 
-.search-container button:hover {
-  background: #444;
-}
+  button[type="submit"]:hover {
+    background: #333;
+ }
 
 nav a {
   margin-left: 15px;
@@ -67,7 +69,7 @@ nav a {
 .titre-panier {
   font-size: 38px;
   margin-bottom: 30px;
-  color: #111;
+  color: #ffffff;
   text-shadow: 1px 1px 2px #fff;
 }
 
@@ -142,7 +144,6 @@ nav a {
   font-size: 20px;
   font-weight: bold;
   padding: 25px 10px 10px;
-  border-top: 1px solid #ccc;
   margin-top: 20px;
   color: #fff;
 }

@@ -5,26 +5,23 @@
   <title>Mon Profil</title>
   <link rel="stylesheet" href="/static/profil.css" />
   <link rel="icon" type="image/x-icon" href="/image/icon.png" />
-</head>
-<body>
   <header>
-    <img src="/image/logo.png" class="logo" alt="Logo" />
-  
+    <img src="image/logo.png" width="200" alt="Logo FZT4">
     <div class="search-container">
-      <form action="/search" method="GET" class="search-bar">
-        <input id="search-input" type="text" placeholder="Rechercher un produit..." name="query" />
-          <button type="submit">🔍</button>
-        </button>
-      </form>
+        <form action="/search" method="GET">
+            <input type="text" placeholder="Rechercher..." name="query">
+            <button type="submit">🔍</button>
+        </form>
     </div>
-    <div class="onglets">
-      <a href="/"><img src="/image/home.png" title="Accueil" /></a>
-      <a href="/logout"><img src="/image/loung.png" title="Déconnexion" /></a>
-    </div>
-  </header>
+    <nav>
+        <a href="/"><img src="image/home.png" width="40" alt="Accueil"></a>
+        <a href="profil.html"><img src="image/profil.png" width="40" alt="Profil"></a>
+    </nav>
+</header>
+  
 
 <main class="profil-page">
-  <aside class="profil-menu">
+  <aside class="profil-menu"> 
     <h2>Mon Compte</h2>
     <ul>
       <li data-tab="informations" class="active">Informations</li>

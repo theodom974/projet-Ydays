@@ -1,0 +1,204 @@
+/* --------- GLOBAL --------- */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+                url('/image/fond.png') no-repeat center center fixed;
+    background-size: cover;
+    color: #fff;
+  }
+  
+  /* --------- HEADER --------- */
+  header {
+    background: rgba(255, 255, 255, 0.95);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    flex-wrap: wrap;
+  }
+  
+  .logo {
+    max-width: 220px;
+  }
+  
+  .search-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .search-container input {
+    width: 300px;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 25px 0 0 25px;
+    font-size: 15px;
+  }
+  
+  button[type="submit"] {
+    padding: 12px 20px;
+    border: none;
+    background: black;
+    color: white;
+    font-size: 15px;
+    border-radius: 0 25px 25px 0;
+    cursor: pointer;
+    transition: background 0.3s;
+ }
+  button[type="submit"]:hover {
+    background: #333;
+ }
+  nav a {
+    margin-left: 15px;
+  }
+  
+  /* --------- PAGE FICHE PRODUIT --------- */
+  .fiche-page {
+    max-width: 1100px;
+    margin: 60px auto;
+    padding: 20px;
+  }
+  
+  .fiche-wrapper {
+    display: flex;
+    flex-direction: column; /* ✅ on force le format vertical */
+    align-items: center;    /* ✅ image centrée */
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 16px;
+    padding: 40px;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+    color: #000;
+    gap: 30px; /* un peu d'espace entre image et texte */
+  }
+
+  .fiche-info {
+    flex: 1 1 400px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    padding-left: 30px;
+  }
+  
+  .fiche-title {
+    font-size: 36px;
+    font-weight: bold;
+    margin: 0;
+  }
+  
+  .fiche-price {
+    font-size: 28px;
+    font-weight: bold;
+    color: #000;
+  }
+  
+  .fiche-promo {
+    font-size: 18px;
+    color: #555;
+  }
+  
+  .fiche-details {
+    list-style: none;
+    padding: 0;
+    font-size: 16px;
+    line-height: 1.6;
+  }
+  
+  .fiche-details li {
+    margin-bottom: 6px;
+  }
+  
+  .fiche-tailles .label,
+  .fiche-quantite .label {
+    font-weight: bold;
+    font-size: 16px;
+  }
+  
+  .taille-buttons {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  
+  .taille-buttons button {
+    padding: 8px 14px;
+    border: 1px solid #ccc;
+    background: #eee;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s ease;
+  }
+  
+  .taille-buttons button.selected {
+    background: #000;
+    color: #fff;
+    border: 1px solid #000;
+  }
+  
+  .qty-control {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  
+  .qty-control button {
+    background: #000;
+    color: #fff;
+    border: none;
+    padding: 8px 14px;
+    font-size: 20px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .qty-control input {
+    width: 60px;
+    text-align: center;
+    padding: 8px;
+    font-size: 18px;
+    border: 1px solid #ccc;
+  }
+  
+  .ajouter-panier {
+    background-color: #000;
+    color: white;
+    padding: 16px;
+    font-size: 18px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s ease;
+  }
+  
+  .ajouter-panier:hover {
+    background-color: #ffd700;
+    color: #000;
+  }
+  
+  /* --------- RESPONSIVE --------- */
+  @media screen and (max-width: 768px) {
+    .fiche-wrapper {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .fiche-image,
+    .fiche-info {
+      width: 100%;
+      padding: 0;
+      text-align: center;
+    }
+  
+    .fiche-info {
+      padding-left: 0;
+    }
+  
+    .taille-buttons {
+      justify-content: center;
+    }
+  }
+  

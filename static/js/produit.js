@@ -1,10 +1,10 @@
-// récupère l'ID du produit depuis l'URL
+// --- Récupère l'ID depuis l'URL ---
 function getIdFromURL() {
     const params = new URLSearchParams(window.location.search);
     return params.get("id");
 }
 
-// charge le produit depuis l'API selon l'ID
+// --- Charge le produit depuis l'API ---
 function chargerProduit(id) {
     fetch('/api/produits')
         .then(res => res.json())
@@ -21,7 +21,7 @@ function chargerProduit(id) {
         });
 }
 
-// injecte dynamiquement le HTML de la fiche produit
+// --- Affiche dynamiquement la fiche ---
 function afficherFiche(produit) {
     const container = document.getElementById("fiche-produit");
 
@@ -34,11 +34,10 @@ function afficherFiche(produit) {
             <div class="fiche-info">
                 <h1 class="fiche-title">${produit.nom}</h1>
                 <p class="fiche-price">${produit.prix}€</p>
-                <p class="fiche-promo">ou 3x ${(produit.prix / 3).toFixed(2)}€ sans frais</p>
+                
 
                 <ul class="fiche-details">
                     <li>✅ Livraison gratuite dès 90€</li>
-                    <li>🎓 Réduction étudiant jusqu'à 10%</li>
                     <li>🔁 Retour gratuit en magasin</li>
                 </ul>
 
@@ -65,15 +64,37 @@ function afficherFiche(produit) {
     `;
 }
 
-// gère les boutons +/- de la quantité
+// --- Gère les boutons +/- ---
 function changerQuantite(val) {
     const input = document.getElementById("quantite");
     let qte = parseInt(input.value);
     qte = Math.max(1, qte + val);
     input.value = qte;
 }
-// écoute du bouton "Ajouter au panier"
+
+// --- Ajouter au panier ---
+function ajouterArticleAuPanier(article) {
+    const panier = JSON.parse(localStorage.getItem("panier")) || [];
+
+    const index = panier.findIndex(item => item.id === article.id && item.taille === article.taille);
+    if (index !== -1) {
+        panier[index].quantite += article.quantite;
+    } else {
+        panier.push(article);
+    }
+
+    localStorage.setItem("panier", JSON.stringify(panier));
+}
+
+// --- Événements DOM ---
 document.addEventListener("click", function (e) {
+    // Gestion sélection taille
+    if (e.target.closest(".taille-buttons button")) {
+        document.querySelectorAll(".taille-buttons button").forEach(btn => btn.classList.remove("selected"));
+        e.target.classList.add("selected");
+    }
+
+    // Gestion ajout panier
     if (e.target.classList.contains("ajouter-panier")) {
         const tailleBtn = document.querySelector(".taille-buttons button.selected");
         if (!tailleBtn) {
@@ -85,7 +106,6 @@ document.addEventListener("click", function (e) {
         const quantite = parseInt(document.getElementById("quantite").value);
         const id = getIdFromURL();
 
-        // re-fetch pour récupérer les infos produit
         fetch('/api/produits')
             .then(res => res.json())
             .then(produits => {
@@ -101,71 +121,14 @@ document.addEventListener("click", function (e) {
                     quantite: quantite
                 };
 
-                ajouterAuPanier(article);
+                ajouterArticleAuPanier(article);
                 alert("Produit ajouté au panier !");
             });
     }
-
-    // gestion des boutons de taille (sélection unique)
-    if (e.target.closest(".taille-buttons button")) {
-        document.querySelectorAll(".taille-buttons button").forEach(btn => btn.classList.remove("selected"));
-        e.target.classList.add("selected");
-    }
 });
 
-// ajoute un produit dans localStorage (ou augmente sa quantité)
-function ajouterAuPanier(article) {
-    const panier = JSON.parse(localStorage.getItem("panier")) || [];
-
-    const index = panier.findIndex(item => item.id === article.id && item.taille === article.taille);
-    if (index !== -1) {
-        panier[index].quantite += article.quantite;
-    } else {
-        panier.push(article);
-    }
-
-    localStorage.setItem("panier", JSON.stringify(panier));
-}
-
-// au chargement de la page
+// --- Chargement initial ---
 window.addEventListener('DOMContentLoaded', () => {
     const id = getIdFromURL();
     if (id) chargerProduit(id);
 });
-// Injecte dynamiquement les produits dans la page
-function afficherProduits(produits) {
-    const section = document.getElementById('products');
-    section.innerHTML = '';
-
-    produits.forEach(produit => {
-        const div = document.createElement('div');
-        div.className = 'product fade-in-element';
-
-        div.innerHTML = `
-            <a href="produit.html?id=${produit.id}" style="text-decoration: none; color: inherit;">
-                <img src="${produit.image || 'image/article/default.png'}" class="product-img">
-                <h3>${produit.nom}</h3>
-                <p class="price">${produit.prix}€</p>
-            </a>
-            <button class="add-to-cart" onclick="ajouterAuPanier(${produit.id})">Ajouter au panier</button>
-        `;
-
-        section.appendChild(div);
-    });
-
-    checkVisibility();
-}
-
-// Fonction pour ajouter au panier
-function ajouterAuPanier(idProduit) {
-    // Récupérer les produits dans le panier ou initialiser le tableau
-    let panier = JSON.parse(localStorage.getItem('panier')) || [];
-
-    // Ajouter l'ID du produit dans le panier (tu peux également ajouter d'autres informations ici)
-    panier.push(idProduit);
-
-    // Sauvegarder dans le localStorage
-    localStorage.setItem('panier', JSON.stringify(panier));
-
-    alert('Produit ajouté au panier !');
-}
