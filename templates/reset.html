@@ -1,16 +1,18 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
   <title>Mot de passe oublié</title>
-  <link rel="stylesheet" href="/static/style.css">
+  <link rel="stylesheet" href="/static/reset.css">
+  <link rel="icon" type="image/x-icon" href="/image/icon.png" />
 </head>
 <body>
   <main class="auth-container">
     <div class="auth-box">
+      <img src="/image/logo.png" alt="Logo">
       <div class="auth-form">
         <h2>Réinitialiser votre mot de passe</h2>
+        <p class="desc">Entrez votre adresse email pour recevoir un lien de réinitialisation.</p>
         <form id="reset-form">
           <input type="email" name="email" placeholder="Votre email" required>
           <button type="submit">Envoyer</button>
