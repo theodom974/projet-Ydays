@@ -74,7 +74,6 @@ def change_password(token):
     return jsonify({"success": True, "message": "Mot de passe mis à jour."})
 
 
-app = Flask(__name__, static_folder='static', template_folder='templates')
 app.secret_key = "feyzin-secret-key"  # clé de session
 
 # ---------------------- ROUTES HTML ----------------------
