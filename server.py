@@ -6,6 +6,16 @@ from flask_mail import Mail, Message
 import secrets
 from itsdangerous import URLSafeTimedSerializer
 
+def init_db():
+    if not os.path.exists("users.db"):
+        conn = sqlite3.connect("users.db")
+        with open("init.sql", "r") as f:
+            conn.executescript(f.read())
+        conn.close()
+        print("📦 users.db créé automatiquement.")
+
+init_db()
+
 app = Flask(__name__, static_folder="static", template_folder="templates")
 app.secret_key = "feyzin-secret-key"
 
